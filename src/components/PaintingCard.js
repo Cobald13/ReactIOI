@@ -17,19 +17,8 @@ function PaintingCard({ imageSrc, title, description, videoSrc }) {
   const cardWidth = cardRef.current ? cardRef.current.offsetWidth : 0;
   const videoHeight = imageAspectRatio ? cardWidth / imageAspectRatio : 0; // Maintain portrait aspect ratio
 
-  const getAutoplayUrl = () => {
-    const videoId = extractYouTubeVideoId(videoSrc);
-    if (!videoId) return null;
-    return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}`; // Autoplay, loop, and mute
-  };
-
-  const extractYouTubeVideoId = (url) => {
-    try {
-      const parsedUrl = new URL(url);
-      return parsedUrl.searchParams.get('v') || parsedUrl.pathname.split('/').pop();
-    } catch {
-      return null;
-    }
+  const handleTogglePlay = () => {
+    setIsPlaying((prevIsPlaying) => !prevIsPlaying); // Toggle play state
   };
 
   return (
@@ -43,13 +32,14 @@ function PaintingCard({ imageSrc, title, description, videoSrc }) {
               position: 'relative',
               overflow: 'hidden',
             }}
+            onClick={handleTogglePlay} // Allow toggling back to the image
           >
-            <iframe
-              src={getAutoplayUrl()} // Embed URL with autoplay and looping
-              title={title}
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
+            <video
+              src={videoSrc} // Use GitHub-hosted video URL
+              autoPlay
+              muted
+              loop
+              controls
               style={{
                 position: 'absolute',
                 top: 0,
@@ -57,7 +47,7 @@ function PaintingCard({ imageSrc, title, description, videoSrc }) {
                 width: '100%',
                 height: '100%',
               }}
-            ></iframe>
+            ></video>
           </div>
         ) : (
           <img
@@ -65,7 +55,7 @@ function PaintingCard({ imageSrc, title, description, videoSrc }) {
             alt={title}
             className="card-img-top"
             style={{ cursor: 'pointer', width: '100%', height: 'auto' }}
-            onClick={() => setIsPlaying(true)}
+            onClick={handleTogglePlay} // Toggle to video when clicked
           />
         )}
         <div className="card-body">
