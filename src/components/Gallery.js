@@ -10,7 +10,7 @@ function Gallery() {
   useEffect(() => {
     const fetchArtists = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:5000/painters'); // Flask endpoint
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/painters`);
         if (!response.ok) {
           throw new Error('Failed to fetch artist data');
         }

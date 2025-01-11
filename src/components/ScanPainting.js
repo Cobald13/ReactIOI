@@ -20,7 +20,7 @@ function ScanPainting() {
     formData.append('file', file);
   
     try {
-      const response = await fetch('http://192.168.1.71:5000/recognize', {  // Use your Flask server's IP
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/recognize`, {  
         method: 'POST',
         body: formData,
       });
