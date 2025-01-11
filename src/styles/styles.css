@@ -1,0 +1,356 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #FEFAE0;
+    /* Cornsilk as the main app background */
+    color: #333;
+    /* Default text color */
+    line-height: 1.6;
+}
+
+/* Header Styles */
+header {
+    background-color: #D4A373;
+    /* Buff */
+    color: #FEFAE0;
+    /* Cornsilk */
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 1.8em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation Bar */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    margin: 0;
+    background-color: #D4A373;
+    /* Buff */
+}
+
+nav a {
+    text-decoration: none;
+    color: #FEFAE0;
+    /* Cornsilk */
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 8px 20px;
+    border-radius: 8px;
+    background-color: #FAEDCD;
+    /* Papaya Whip for links */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #CCD5AE;
+    /* Tea Green */
+    transform: scale(1.1);
+    /* Slight zoom effect */
+}
+
+/* Search Bar Section */
+#search {
+    padding: 20px;
+    /* Adds space around the section */
+    text-align: center;
+    /* Centers the input box */
+    background-color: #FEFAE0;
+    /* Cornsilk */
+}
+
+#search-bar {
+    width: 90%;
+    /* Makes the input responsive with space on both sides */
+    max-width: 400px;
+    /* Ensures it doesn't grow too large on wide screens */
+    padding: 10px;
+    /* Adds internal padding for usability */
+    font-size: 1em;
+    border: 1px solid #D4A373;
+    /* Buff */
+    border-radius: 5px;
+    background-color: #FAEDCD;
+    /* Papaya Whip */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Gallery Layout */
+.artist-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background-color: #FEFAE0;
+    /* Cornsilk */
+}
+
+/* General styles for artist cards */
+.artist-card {
+    background-color: #FAEDCD; /* Papaya Whip */
+    border: 1px solid #CCD5AE; /* Tea Green */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 400px; /* Set a fixed height for all cards */
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    justify-content: space-between; /* Add space between sections */
+}
+
+/* Card Footer */
+.card-footer {
+    height: 15%; /* Reserve space for the footer */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #D4A373; /* Buff */
+    padding: 10px;
+    text-align: center;
+    border-top: 1px solid #CCD5AE; /* Separator for footer */
+}
+
+/* Button Style */
+.btn-gallery {
+    background-color: #FEFAE0;
+    /* Cornsilk */
+    border: 1px solid #D4A373;
+    /* Buff */
+    color: #333;
+    /* Dark text */
+    font-size: 1em;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    /* Remove underline */
+}
+
+/* Button Hover Effect */
+.btn-gallery:hover {
+    background-color: #D4A373;
+    /* Buff */
+    color: #FEFAE0;
+    /* Cornsilk */
+    transform: scale(1.1);
+    /* Slight zoom effect */
+}
+
+/* Container for images */
+.card-images {
+    height: 100%; /* Ensure the container uses its allocated height */
+    display: flex;
+    align-items: stretch; /* Stretch images vertically to fill height */
+    justify-content: space-between; /* Space images evenly */
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* Individual images */
+.artist-image {
+    flex: 0 0 calc(33.33%); /* Each image occupies one-third of the container */
+    width: calc(100% / 3); /* Ensure equal width for all images */
+    height: 100%; /* Fill the height of the container */
+    object-fit: cover; /* Maintain aspect ratio and fill the container */
+    transition: transform 0.3s ease; /* Smooth transition for scaling */
+    border-right: 1px solid #CCD5AE; /* Add a border between images */
+}
+
+/* Remove border for the last image */
+.artist-image:last-child {
+    border-right: none; /* Remove the border for the last image */
+}
+
+/* Hover effect for resizing images */
+.card-images:hover .artist-image {
+    width: calc(100% / 3);
+    /* Maintain equal width on hover */
+}
+
+.card-images .artist-image:hover {
+    transform: scale(1.1); /* Slight zoom effect for interactivity */
+    z-index: 1; /* Bring hovered image to the front */
+}
+
+.artist-image:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border: none;
+}
+
+.card-images .artist-image {
+    transform: scale(1); /* Default state matches hover state for consistent display */
+}
+
+/* Title placed above the card */
+.card-title-top {
+    background-color: #D4A373;
+    /* Buff */
+    color: #FEFAE0;
+    /* Cornsilk */
+    text-align: center;
+    font-size: 1.5em;
+    padding: 10px 0;
+    margin-bottom: 0px;
+    /* Adds spacing between the title and the card */
+    border-radius: 8px 8px 0 0;
+    /* Rounded top corners */
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Adds a slight shadow for separation */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .card-images {
+        display: flex;
+        flex-wrap: nowrap; /* Ensure images are aligned horizontally */
+        overflow-x: auto; /* Allow horizontal scrolling */
+        height: auto; /* Adjust height dynamically */
+    }
+
+    .artist-image {
+        flex: 0 0 33.33%; /* Each image takes up one-third of the width */
+        width: 33.33%; /* Explicitly define the width */
+        height: auto; /* Maintain natural height on narrow screens */
+        object-fit: cover; /* Prevent distortion */
+    }
+
+    .artist-card {
+        height: auto; /* Let the card expand dynamically */
+    }
+}
+
+/* Card Body */
+.card-body {
+    padding: 15px;
+    background-color: var(--papaya-whip);
+    color: #333; /* Default text color for card content */
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #D4A373;
+    /* Buff */
+    color: #FEFAE0;
+    /* Cornsilk */
+    font-size: 0.9em;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+#back-to-top {
+    background-color: var(--tea-green);
+    /* Match existing button style */
+    color: white;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#back-to-top:hover {
+    background-color: var(--buff);
+    /* Buff color on hover */
+    transform: scale(1.1);
+    /* Slight zoom effect */
+}
+
+:root {
+    --tea-green: #CCD5AE;
+    --beige: #E9EDC9;
+    --cornsilk: #FEFAE0;
+    --papaya-whip: #FAEDCD;
+    --buff: #D4A373;
+}
+
+body {
+    background-color: var(--cornsilk);
+    /* Main background: Cornsilk */
+}
+
+.hero-section {
+    background-color: var(--buff);
+    /* Buff */
+    color: var(--cornsilk);
+    /* Cornsilk text */
+    padding: 40px 0;
+    text-align: center;
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+}
+
+.card {
+    background-color: var(--papaya-whip);
+    /* Papaya Whip for cards */
+    border: 1px solid var(--tea-green);
+    /* Tea Green border */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    font-size: 1.25rem; /* Adjust size for emphasis */
+    font-weight: bold; /* Make the title bold */
+    margin-bottom: 10px; /* Space between title and content */
+    color: var(--buff); /* Match the thematic color for titles */
+}
+
+footer {
+    background-color: var(--buff);
+    /* Buff */
+    color: var(--cornsilk);
+    /* Cornsilk */
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: var(--tea-green);
+    /* Tea Green */
+    border: none;
+    color: white;
+    /* Default text color */
+}
+
+.btn-primary:hover,
+.btn-outline-light:hover {
+    background-color: white;
+    /* White background on hover */
+    color: var(--buff);
+    /* Buff text */
+}
+
+.btn-outline-light {
+    color: var(--cornsilk);
+    /* Cornsilk text */
+    border-color: var(--cornsilk);
+    /* Cornsilk border */
+}
+
+.modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    /* Darker background for dim effect */
+}
