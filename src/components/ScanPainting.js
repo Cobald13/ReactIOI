@@ -2,24 +2,9 @@ import React, { useState, useEffect } from 'react';
 
 function ScanPainting() {
   const [selectedFile, setSelectedFile] = useState(null);
-  const [backendUrl, setBackendUrl] = useState(null); // State for backend URL
+  const backendUrl = 'https://pure-chicken-urgently.ngrok-free.app'; // Static Ngrok URL
   const [error, setError] = useState(null);
 
-  // Fetch backend configuration when component mounts
-  useEffect(() => {
-    const fetchConfig = async () => {
-      try {
-        const response = await fetch('http://127.0.0.1:5000/config');
-        const config = await response.json();
-        setBackendUrl(config.backend_url); // Set the backend URL dynamically
-      } catch (err) {
-        console.error('Error fetching backend config:', err);
-        setError('Failed to fetch backend configuration');
-      }
-    };
-
-    fetchConfig();
-  }, []);
 
   const handleFileChange = (event) => {
     setError(null);
