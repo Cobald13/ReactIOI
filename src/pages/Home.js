@@ -9,7 +9,7 @@ function Home() {
     <div>
       <Header />
       <SearchBar />
-      <ScanPainting />
+      {/* <ScanPainting /> */}
       <Gallery />
     </div>
   );

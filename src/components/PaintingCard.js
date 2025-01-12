@@ -22,7 +22,7 @@ function PaintingCard({ imageSrc, title, description, videoSrc }) {
   };
 
   return (
-    <div className="col" ref={cardRef}>
+    <div className="painting-card" ref={cardRef}>
       <div className="card shadow-sm">
         {isPlaying ? (
           <div
@@ -35,7 +35,7 @@ function PaintingCard({ imageSrc, title, description, videoSrc }) {
             onClick={handleTogglePlay} // Allow toggling back to the image
           >
             <video
-              src={videoSrc} // Use GitHub-hosted video URL
+              src={videoSrc}
               autoPlay
               muted
               loop
