@@ -1,8 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function ScanPainting() {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [backendUrl, setBackendUrl] = useState(null); // State for backend URL
   const [error, setError] = useState(null);
+
+  // Fetch backend configuration when component mounts
+  useEffect(() => {
+    const fetchConfig = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:5000/config');
+        const config = await response.json();
+        setBackendUrl(config.backend_url); // Set the backend URL dynamically
+      } catch (err) {
+        console.error('Error fetching backend config:', err);
+        setError('Failed to fetch backend configuration');
+      }
+    };
+
+    fetchConfig();
+  }, []);
 
   const handleFileChange = (event) => {
     setError(null);
@@ -16,22 +33,30 @@ function ScanPainting() {
   };
 
   const handleFileUpload = async (file) => {
+    if (!backendUrl) {
+      setError('Backend URL not available');
+      return;
+    }
+
     const formData = new FormData();
     formData.append('file', file);
-  
+
     try {
-      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/recognize`, {  
+      const response = await fetch(`${backendUrl}/recognize`, {
         method: 'POST',
+        headers: {
+          'ngrok-skip-browser-warning': 'true', // Add this header
+        },
         body: formData,
       });
-  
+
       if (!response.ok) {
         throw new Error('Failed to recognize the painting');
       }
-  
+
       const data = await response.json();
       console.log(data); // Log the response for debugging
-  
+
       if (data._id) {
         // Redirect to the painter's page
         window.location.href = `/painter/${data._id}`;
@@ -68,4 +93,3 @@ function ScanPainting() {
 }
 
 export default ScanPainting;
-  

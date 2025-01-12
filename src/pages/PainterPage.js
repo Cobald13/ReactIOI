@@ -5,14 +5,37 @@ import PaintingCard from '../components/PaintingCard';
 
 function PainterPage() {
   const { id } = useParams(); // Get painter ID from URL
+  const [backendUrl, setBackendUrl] = useState(null); // State for backend URL
   const [painter, setPainter] = useState(null);
   const [error, setError] = useState(null);
 
-  // Fetch painter data when component mounts
+  // Fetch backend configuration when component mounts
   useEffect(() => {
+    const fetchConfig = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:5000/config');
+        const config = await response.json();
+        setBackendUrl(config.backend_url); // Set the backend URL dynamically
+      } catch (err) {
+        console.error('Error fetching backend config:', err);
+        setError('Failed to fetch backend configuration');
+      }
+    };
+
+    fetchConfig();
+  }, []);
+
+  // Fetch painter data once the backend URL is set
+  useEffect(() => {
+    if (!backendUrl) return; // Wait until backendUrl is available
+
     const fetchPainter = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/painter/${id}`);
+        const response = await fetch(`${backendUrl}/painter/${id}`, {
+          headers: {
+            'ngrok-skip-browser-warning': 'true', // Add this header
+          },
+        });
         if (!response.ok) {
           throw new Error('Painter not found');
         }
@@ -25,7 +48,7 @@ function PainterPage() {
     };
 
     fetchPainter();
-  }, [id]);
+  }, [backendUrl, id]); // Dependency array includes backendUrl and id
 
   // Handle loading state
   if (error) {

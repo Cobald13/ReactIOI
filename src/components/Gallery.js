@@ -4,31 +4,53 @@ import ArtistCard from './ArtistCard';
 
 function Gallery() {
   const [artists, setArtists] = useState([]); // State to store fetched artist data
+  const [backendUrl, setBackendUrl] = useState(null); // State to store backend URL
   const [error, setError] = useState(null);
 
-  // Fetch data from Flask backend when component mounts
+  // Fetch the backend config when the component mounts
   useEffect(() => {
+    const fetchConfig = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:5000/config');
+        const config = await response.json();
+        setBackendUrl(config.backend_url); // Set the backend URL dynamically
+      } catch (err) {
+        console.error('Error fetching backend config:', err);
+        setError('Failed to fetch backend configuration');
+      }
+    };
+
+    fetchConfig();
+  }, []); // Empty dependency array ensures this runs only once on mount
+
+  // Fetch artists data once the backend URL is set
+  useEffect(() => {
+    if (!backendUrl) return; // Don't fetch artists until backend URL is available
+
     const fetchArtists = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/painters`);
+        const response = await fetch(`${backendUrl}/painters`, {
+          headers: {
+            'ngrok-skip-browser-warning': 'true', // Add this header
+          },
+        });
         if (!response.ok) {
-          throw new Error('Failed to fetch artist data');
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const data = await response.json(); // Parse JSON response
-        setArtists(data); // Set fetched data to state
+        const data = await response.json();
+        setArtists(data);
       } catch (err) {
-        console.error("Error fetching data:", err);
-        setError("Could not load artist data. Please try again later.");
+        console.error('Error fetching artists:', err);
+        setError('Could not load artist data. Please try again later.');
       }
     };
 
     fetchArtists();
-  }, []);
+  }, [backendUrl]); // Dependency array includes backendUrl
 
   return (
     <section id="gallery" className="py-5">
       <div className="container">
-
         {error && <p className="text-danger text-center">{error}</p>}
 
         <div className="row g-4">
