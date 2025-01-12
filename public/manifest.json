@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Spletna galerija slovenskih slikarjev",
+  "name": "IOI projekt",
   "icons": [
     {
       "src": "favicon.ico",
