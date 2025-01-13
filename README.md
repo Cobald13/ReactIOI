@@ -1,5 +1,7 @@
 # React spletna aplikacija - frontend
 
+Povezava do predstavitve [https://drive.google.com/file/d/1jEyVU3gHlEwO5Y2f0YPyTMc5LNg8OIeG/view?usp=sharing]
+
 React aplikacija je v celoti gostovana na platformi Render in je na voljo na povezavi [https://reactioi.onrender.com/]
 
 Ker gre za brezplačno različico spletnega gostovanja, se strežnik po daljšem obdobju neaktivnosti ustavi. Ob obisku spletne strani je tako potrebno počakati, da se strežnik ponovno požene - pribljižno eno minuto.
