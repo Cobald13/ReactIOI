@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import HeroSection from '../components/HeroSection';
 import PaintingCard from '../components/PaintingCard';
+import '../styles/styles.css';
 
 function PainterPage() {
   const { id } = useParams(); // Get painter ID from URL

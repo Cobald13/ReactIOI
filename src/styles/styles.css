@@ -217,7 +217,7 @@ nav a:hover {
         display: flex;
         flex-wrap: nowrap; /* Ensure images are aligned horizontally */
         overflow-x: auto; /* Allow horizontal scrolling */
-        height: auto; /* Adjust height dynamically */
+        height: 300px; /* Adjust height dynamically */
     }
 
     .artist-image {

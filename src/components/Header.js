@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/styles.css';
 
 function Header() {
   const [error, setError] = useState(null);

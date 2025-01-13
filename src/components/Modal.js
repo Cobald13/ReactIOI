@@ -1,5 +1,6 @@
 // src/components/Modal.js
 import React from 'react';
+import '../styles/styles.css';
 
 function Modal({ modalId, videoSrc }) {
   return (

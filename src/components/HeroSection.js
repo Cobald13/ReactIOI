@@ -1,5 +1,6 @@
 // src/components/HeroSection.js
 import React from 'react';
+import '../styles/styles.css';
 
 function HeroSection({ painterName, description, onScrollToAlbum }) {
   return (

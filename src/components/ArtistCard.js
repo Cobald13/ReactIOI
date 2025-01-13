@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import '../styles/styles.css';
 
 function ArtistCard({ artistName, images, galleryLink }) {
   const painterId = galleryLink.split('.html')[0]; // Extract the ID (e.g., "kobilca")

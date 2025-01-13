@@ -1,3 +1,5 @@
+import '../styles/styles.css';
+
 import React, { useState, useEffect, useRef } from 'react';
 
 function PaintingCard({ imageSrc, title, description, videoSrc }) {
@@ -18,7 +20,10 @@ function PaintingCard({ imageSrc, title, description, videoSrc }) {
   const videoHeight = imageAspectRatio ? cardWidth / imageAspectRatio : 0; // Maintain portrait aspect ratio
 
   const handleTogglePlay = () => {
-    setIsPlaying((prevIsPlaying) => !prevIsPlaying); // Toggle play state
+    // Check if videoSrc is valid before toggling
+    if (videoSrc && videoSrc !== "/") {
+      setIsPlaying((prevIsPlaying) => !prevIsPlaying); // Toggle play state
+    }
   };
 
   return (

@@ -7,17 +7,16 @@ painters_collection = db["Slikarji"]  # Replace with your collection name
 
 # New painting to add
 new_painting = {
-  "id": "motiv_iz_holandije",
-  "title": "Motiv iz Holandije",
-  "description": "Olje na platnu, 30 x 48 cm, sign. d. sp.: M. JAMA. NG S 2019, Narodna galerija, Ljubljana. Slika prikazuje most iz 17. stoletja, imenovan Hoorn (Hoornbrug), ki se nahaja med Delftom in Haagom pri Rijswijku na kanalu Vliet. Kompozicija vključuje stolpasti mlin na veter, emblem Nizozemske, in raziskuje odseve na vodi, kar kaže na vpliv Moneta, ki je bil pomemben vir navdiha za Jamo v času njegovega prvega obiska Holandije leta 1910. Zrcalno obrnjena kompozicija je primerljiv način obravnave naravnih pojavov, značilnih za Jamovo delo v tem obdobju. Njegova interpretacija temelji na kombinaciji elementov iz nizozemskih in impresionističnih tradicij.",
-  "imageSrc": "https://github.com/Cobald13/ReactIOI/blob/main/public/images/jama_motiv_iz_holandije.jpg",
-  "videoSrc": "https://cobald13.github.io/ReactIOI/public/video/jama_motiv_iz_holandije.mp4"
+  "id": "riba",
+  "title": "Riba (1986)",
+  "description": "Tempera na ročno izdelanem papirju, 261 x 399 mm, sign. in dat. d. sp.: Music 86. NG G 8253, Narodna galerija, Ljubljana. 'Riba' je del serije tihožitij Zorana Mušiča, v katerih pogosto upodablja morske sadeže, kot so ribe in školjke. Ta motiv je bil za umetnika značilen že v tridesetih in štiridesetih letih 20. stoletja, ko je raziskoval srebrn lesk lusk na sardelah in slanikih. V osemdesetih letih je svoje motive nadgradil v izrazite barvne študije, kot je 'Riba'.\n\nNa dragocenem, najverjetneje japonskem ročno izdelanem papirju je Mušič s tempero upodobil veliko rdečo ribo na ovalnem srebrnem krožniku. Barvna paleta temelji na zlato oranžnih tonih, ki so postavljeni na sivo-črno-rjavem ozadju. Groba tekstura papirja dodatno bogati kompozicijo in poudarja umetnikovo mojstrstvo v izbiri materialov in tehnik.\n\nDelo je bilo Narodni galeriji podarjeno kot del donacije Ljubana, Milade in Vande Mušič in odraža umetnikovo zrelost ter prefinjen občutek za tihožitje.",
+  "imageSrc": "https://github.com/Cobald13/ReactIOI/blob/main/public/images/muzic_riba.jpg",
+  "videoSrc": "https://cobald13.github.io/ReactIOI/public/video/muzic_riba.mp4"
 }
-
 
 # Append the new painting to the 'paintings' array
 result = painters_collection.update_one(
-    {"_id": "jama"},  # Find the document with _id "kobilca"
+    {"_id": "music"},  # Find the document with _id "kobilca"
     {"$push": {"paintings": new_painting}}  # Append to the paintings array
 )
 
