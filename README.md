@@ -13,8 +13,8 @@ Ker gre za brezplačno različico spletnega gostovanja, se strežnik po daljšem
 ki zažene aplikacijo v načinu za razvijalce.\
 Odprite [http://localhost:3000](http://localhost:3000) da stran vidite v svojem brskalniku.
 
-Stran se bo osvežila, ko boste naredili spremembe.\
+Stran se bo osvežila, ko boste naredili spremembe.
 
-### `Pomembno: preden obiščete spletno stran, mora biti zagnan tudi backend flask aplikacija!` \
+### `Pomembno: preden obiščete spletno stran, mora biti zagnan tudi backend flask aplikacija!`
 
 ### python app.py - zagon backend aplikacije - glej readme backend aplikacije
