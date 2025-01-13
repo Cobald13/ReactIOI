@@ -1,5 +1,4 @@
 import '../styles/styles.css';
-
 import React, { useState, useEffect, useRef } from 'react';
 
 function PaintingCard({ imageSrc, title, description, videoSrc }) {
@@ -64,7 +63,9 @@ function PaintingCard({ imageSrc, title, description, videoSrc }) {
           />
         )}
         <div className="card-body">
-          <h5 className="card-title">{title}</h5>
+          <h5 className="card-title">
+            {title} {videoSrc && videoSrc !== "/" && <span>🎥</span>}
+          </h5>
           <p className="card-text">{description}</p>
         </div>
       </div>
